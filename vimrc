@@ -34,7 +34,7 @@ let g:vim_markdown_folding_disabled = 1
 "     let g:solarized_termcolors=256
 " endif
 syntax enable
-colorscheme eink
+colorscheme newsprint
 set background=dark
 
 " Options
