@@ -10,7 +10,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'jamessan/vim-gnupg'
 
 " Colors
-Plug 'clinstid/eink.vim'
+Plug 'bruth/vim-newsprint-theme'
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
