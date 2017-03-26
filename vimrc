@@ -11,9 +11,6 @@ Plug 'jamessan/vim-gnupg'
 
 " Colors
 Plug 'clinstid/eink.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tomasr/molokai'
-Plug 'bruth/vim-newsprint-theme'
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
