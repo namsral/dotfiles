@@ -1,6 +1,7 @@
 " Enable vim-plug to manage plugins
 call plug#begin('~/src/github.com/junegunn/vim-plug')
 
+" Text line up
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'
 Plug 'SirVer/ultisnips'
@@ -8,19 +9,22 @@ Plug 'neomake/neomake'
 Plug 'itchyny/lightline.vim'
 Plug 'jamessan/vim-gnupg'
 
+" Colors
 Plug 'clinstid/eink.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'bruth/vim-newsprint-theme'
 
+" Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Go
 Plug 'fatih/vim-go'
 Plug 'dgryski/vim-godef'
 
+" Tag completion
 Plug 'ervandew/sgmlendtag'
-Plug 'tomasr/molokai'
 
 Plug 'plasticboy/vim-markdown'
 call plug#end()
@@ -40,12 +44,12 @@ set background=dark
 " Options
 set nocompatible
 set encoding=utf-8
-set list listchars=eol:¬,tab:›\ ,trail:·
 set relativenumber
 set number
 set tabstop=4
-set list            " make whitespace visble
 set shiftwidth=4
+set list            " make whitespace visble
+set list listchars=eol:¬,tab:›\ ,trail:·
 set ic              " Ignore case when searching
 set cursorline      " highlight current line
 set vb              " enable visual bell (disable audio bell)
@@ -86,7 +90,7 @@ nnoremap <leader>w :w<cr>" save file
 " GnuPGP options
 let g:GPGPreferArmor=1
 
-" Go
+" Go options
 let g:go_fmt_command = "goimports"
 let g:neomake_go_enabled_makers = ['golint' ]
 autocmd! BufWritePost *.go Neomake " Run Neomake on save
