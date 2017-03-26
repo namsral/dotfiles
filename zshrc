@@ -84,6 +84,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Enable vi bindingsj
 bindkey -v
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Source aliases
+[ -f ~/.dotfiles/aliases ] && source $HOME/.dotfiles/aliases
+
+[ -f ~/.fzf.zsh ] && source $HOME/.fzf.zsh
