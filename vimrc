@@ -1,22 +1,30 @@
 " Enable vim-plug to manage plugins
 call plug#begin('~/src/github.com/junegunn/vim-plug')
 
+" Text line up
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'
 Plug 'SirVer/ultisnips'
-Plug 'kien/ctrlp.vim'
 Plug 'neomake/neomake'
 Plug 'itchyny/lightline.vim'
 Plug 'jamessan/vim-gnupg'
 
+" Colors
+Plug 'clinstid/eink.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'bruth/vim-newsprint-theme'
+
+" Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Go
 Plug 'fatih/vim-go'
 Plug 'dgryski/vim-godef'
 
+" Tag completion
 Plug 'ervandew/sgmlendtag'
-Plug 'tomasr/molokai'
 
 Plug 'plasticboy/vim-markdown'
 call plug#end()
@@ -25,20 +33,23 @@ call plug#end()
 let g:vim_markdown_folding_disabled = 1
 
 " Options for the solarized color theme
-if !has("gui_running")
-    let g:solarized_termtrans=1
-    let g:solarized_termcolors=256
-endif
-syntax on
-colorscheme solarized
+" if !has("gui_running")
+"     let g:solarized_termtrans=1
+"     let g:solarized_termcolors=256
+" endif
+syntax enable
+colorscheme newsprint
 set background=dark
 
 " Options
+set nocompatible
+set encoding=utf-8
 set relativenumber
 set number
 set tabstop=4
-set list            " make whitespace visble
 set shiftwidth=4
+set list            " make whitespace visble
+set list listchars=eol:¬,tab:›\ ,trail:·
 set ic              " Ignore case when searching
 set cursorline      " highlight current line
 set vb              " enable visual bell (disable audio bell)
@@ -56,28 +67,30 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" Netrw options
+" Vim's file browser options; netrw
 let g:netrw_banner = 0    " disable banner
 let g:netrw_liststyle = 3 " tree style
 
 " Frequent actions mapped
+" Sorted by key
 let mapleader="\<Space>"
-nnoremap <leader>f :find
-nnoremap <leader>l :CtrlPBuffer<cr> " Open buffer menu
-nnoremap <leader>r :CtrlPMRUFiles<cr> " Open most recently used files
-nnoremap <leader>e :CtrlP .<cr> " Open file menu
-nnoremap <leader>E :Explore . " Open explorer
+" nnoremap <leader>r :CtrlPMRUFiles<cr> " Open most recently used files
 nnoremap <leader>c :close<cr>
 nnoremap <leader>d :bd<cr> "Delete buffer
-nnoremap <leader>w :w<cr>" save file
+nnoremap <leader>e :FZF .<cr> " Open file menu
+nnoremap <leader>E :Explore . " Open explorer
+nnoremap <leader>f :find
+nnoremap <leader>h :History<cr> " FZF v:oldfiles and open buffers
+nnoremap <leader>ls :Buffers<cr> " List open buffers
+vnoremap <leader>M :make<cr>
 nnoremap <leader>n :new<cr>" new
 nnoremap <leader>R :so ~/.vimrc<cr>" reload vim config
-vnoremap <leader>M :make<cr>
+nnoremap <leader>w :w<cr>" save file
 
 " GnuPGP options
 let g:GPGPreferArmor=1
 
-" Go
+" Go options
 let g:go_fmt_command = "goimports"
 let g:neomake_go_enabled_makers = ['golint' ]
 autocmd! BufWritePost *.go Neomake " Run Neomake on save
