@@ -38,6 +38,9 @@ colorscheme newsprint
 set background=dark
 
 " Options
+set nocompatible
+set encoding=utf-8
+set list listchars=eol:¬,tab:›\ ,trail:·
 set relativenumber
 set number
 set tabstop=4
