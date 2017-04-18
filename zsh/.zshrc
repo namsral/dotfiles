@@ -87,7 +87,16 @@ source $ZSH/oh-my-zsh.sh
 # Enable vi bindingsj
 bindkey -v
 
-# Source aliases
-[ -f ~/.dotfiles/aliases ] && source $HOME/.dotfiles/aliases
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+#for file in $DOTFILES/{path,bash_prompt,exports,aliases,functions,extra}; do
+for file in $DOTFILES/{aliases.zsh,exports.zsh,functions.zsh}
+do
+	[ -r "$file" ] && [ -f "$file" ] && . "$file"
+done
+unset file
+
+#[ -f "$DOTFILES/aliases.zsh" ] && . "$DOTFILES/aliases"
 
 [ -f ~/.fzf.zsh ] && source $HOME/.fzf.zsh
