@@ -1,4 +1,4 @@
-export EDITOR=/usr/bin/env vim
+export EDITOR=vim
 export CLICOLOR='yes'
 export TERM=xterm-256color
 
