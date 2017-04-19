@@ -48,7 +48,7 @@ set shiftwidth=4
 set list            " make whitespace visble
 set list listchars=eol:¬,tab:›\ ,trail:·
 set ic              " Ignore case when searching
-set cursorline      " highlight current line
+set nocursorline    " highlight current line
 set vb              " enable visual bell (disable audio bell)
 set scrolloff=2     " minimum lines above/below cursor
 set wildmode=longest:full " tab completion similar to bash
@@ -78,7 +78,7 @@ nnoremap <leader>e :FZF .<cr> " Open file menu
 nnoremap <leader>E :Explore . " Open explorer
 nnoremap <leader>f :find
 nnoremap <leader>h :History<cr> " FZF v:oldfiles and open buffers
-nnoremap <leader>ls :Buffers<cr> " List open buffers
+nnoremap <leader>l :Buffers<cr> " List open buffers
 vnoremap <leader>M :make<cr>
 nnoremap <leader>n :new<cr>" new
 nnoremap <leader>R :so ~/.vimrc<cr>" reload vim config
