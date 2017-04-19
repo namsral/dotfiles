@@ -8,6 +8,7 @@ Plug 'SirVer/ultisnips'
 Plug 'neomake/neomake'
 Plug 'itchyny/lightline.vim'
 Plug 'jamessan/vim-gnupg'
+Plug 'tpope/vim-surround'
 
 " Colors
 Plug 'bruth/vim-newsprint-theme'
