@@ -3,7 +3,3 @@ export ZDOTDIR="$DOTFILES/zsh"
 
 # Set CDPATH
 CDPATH=".:$HOME/src:$GOPATH/src"
-
-
-
-lars
