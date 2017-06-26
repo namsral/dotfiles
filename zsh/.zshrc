@@ -91,7 +91,7 @@ bindkey -v
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 #for file in $DOTFILES/{path,bash_prompt,exports,aliases,functions,extra}; do
-for file in $DOTFILES/{aliases.zsh,exports.zsh,functions.zsh}
+for file in $DOTFILES/{aliases.zsh,exports.zsh,functions.zsh} $HOME/.localrc
 do
 	[ -r "$file" ] && [ -f "$file" ] && . "$file"
 done
@@ -100,3 +100,17 @@ unset file
 #[ -f "$DOTFILES/aliases.zsh" ] && . "$DOTFILES/aliases"
 
 [ -f ~/.fzf.zsh ] && source $HOME/.fzf.zsh
+
+
+[ -z "$DOTFILES" ] && export DOTFILES="$HOME/.dotfiles"
+export ZDOTDIR="$DOTFILES/zsh"
+
+# Set PATH on macOS
+# source: http://www.softec.lu/site/DevelopersCorner/MasteringThePathHelper
+if [ -x /usr/libexec/path_helper ]; then
+	export PATH=""
+	eval $(/usr/libexec/path_helper -s)
+	PATH="$(cat /etc/paths.d/* |tr '\n' ':'):$PATH"
+fi
+
+[ -d "$HOME/bin" ] && PATH=$HOME/bin:$PATH
