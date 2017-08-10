@@ -4,7 +4,6 @@ alias ...='cd ../..'
 alias beep="printf '\a'"
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -i'
 alias mkdir='mkdir -p'
 alias grep='grep --color=auto'
 
