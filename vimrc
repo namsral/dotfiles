@@ -6,12 +6,8 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'
 Plug 'SirVer/ultisnips'
 Plug 'neomake/neomake'
-Plug 'itchyny/lightline.vim'
 Plug 'jamessan/vim-gnupg'
 Plug 'tpope/vim-surround'
-
-" Colors
-Plug 'bruth/vim-newsprint-theme'
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -24,20 +20,16 @@ Plug 'dgryski/vim-godef'
 " Tag completion
 Plug 'ervandew/sgmlendtag'
 
+" Markdown syntax highlighting
 Plug 'plasticboy/vim-markdown'
+
 call plug#end()
 
 " Options for Plug 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
 
-" Options for the solarized color theme
-" if !has("gui_running")
-"     let g:solarized_termtrans=1
-"     let g:solarized_termcolors=256
-" endif
 syntax enable
-colorscheme newsprint
-set background=dark
+colorscheme snapper
 
 " Options
 set nocompatible
@@ -47,13 +39,27 @@ set number
 set tabstop=4
 set shiftwidth=4
 set list            " make whitespace visble
-set list listchars=eol:¬,tab:›\ ,trail:·
 set ic              " Ignore case when searching
-set nocursorline    " highlight current line
+set cursorline      " highlight current line
 set vb              " enable visual bell (disable audio bell)
 set scrolloff=2     " minimum lines above/below cursor
 set wildmode=longest:full " tab completion similar to bash
-let &colorcolumn=join(range(81,999),",") " Hint to keep lines short
+set colorcolumn=80
+set list listchars=eol:¬,tab:›\ ,trail:·
+
+" Status bar
+set laststatus=2
+set statusline=                              " clear statusline
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%f\                          " file name
+set statusline+=%h%m%r%w                     " flags
+set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
+set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
+set statusline+=%{&fileformat}]              " file format
+set statusline+=%=                           " right align
+set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\  " highlight
+set statusline+=%b,0x%-8B\                   " current char
+set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 
 " Disable arrow keys in normal and insert mode to force use of hjkl
 map <up> <nop>
@@ -72,7 +78,6 @@ let g:netrw_liststyle = 3 " tree style
 " Frequent actions mapped
 " Sorted by key
 let mapleader="\<Space>"
-" nnoremap <leader>r :CtrlPMRUFiles<cr> " Open most recently used files
 nnoremap <leader>c :close<cr>
 nnoremap <leader>d :bd<cr> "Delete buffer
 nnoremap <leader>e :FZF .<cr> " Open file menu
@@ -84,6 +89,7 @@ vnoremap <leader>M :make<cr>
 nnoremap <leader>n :new<cr>" new
 nnoremap <leader>R :so ~/.vimrc<cr>" reload vim config
 nnoremap <leader>w :w<cr>" save file
+nnoremap <leader>o <C-w>w " toggle window
 
 " GnuPGP options
 let g:GPGPreferArmor=1
