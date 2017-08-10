@@ -26,7 +26,7 @@ function iprev() {
 	echo $1 |awk '{split($0,a,"."); printf "%d.%d.%d.%d",a[4],a[3],a[2],a[1]}'
 }
 
-# Test if an IP is on the zen.spamhaus.org blacklist
+# Test if an IP is on the zen.spamhaus.org blacklist using an OpenDNS server
 function zen() {
-	dig +short $(iprev $1).zen.spamhaus.org
+	dig +short $(iprev $1).zen.spamhaus.org @208.67.222.222
 }
