@@ -114,3 +114,6 @@ if [ -x /usr/libexec/path_helper ]; then
 fi
 
 [ -d "$HOME/bin" ] && PATH=$HOME/bin:$PATH
+
+#export FZF_DEFAULT_COMMAND='find ~/Documents ~/Projects ~/src -type f -not -name .DS_Store -not -name "*.swp"'
+export FZF_DEFAULT_COMMAND='ag -l --hidden -U -g "" --ignore ".git"'
