@@ -11,6 +11,7 @@ function fh() { sh -c "$(sed 's/: [0-9]*:0;//' $HISTFILE |fzf)" }
 function mkcd() { mkdir -p -v "$1"; cd "$1"; }
 function cdtemp() { cd $(mktemp -d) }
 function fkill() { ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9} }
+function fd() { cd $(find ~/Projects ~/src -type d |fzf) }
 
 # Shortcut to open note files
 function note() {
