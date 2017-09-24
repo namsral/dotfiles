@@ -4,7 +4,6 @@ call plug#begin('~/src/github.com/junegunn/vim-plug')
 " Text line up
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'
-Plug 'SirVer/ultisnips'
 Plug 'neomake/neomake'
 Plug 'jamessan/vim-gnupg'
 Plug 'tpope/vim-surround'
@@ -23,6 +22,12 @@ Plug 'ervandew/sgmlendtag'
 " Markdown syntax highlighting
 Plug 'plasticboy/vim-markdown'
 
+" Use ag, aka Silver Searcher, instead of grep
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+"
 call plug#end()
 
 " Options for Plug 'plasticboy/vim-markdown'
@@ -97,8 +102,8 @@ let g:GPGPreferArmor=1
 " Go options
 let g:go_fmt_command = "goimports"
 let g:neomake_go_enabled_makers = ['golint' ]
-autocmd! BufWritePost *.go Neomake " Run Neomake on save
-autocmd BufRead *.go Neomake " Run Neomake on open
+"autocmd! BufWritePost *.go Neomake " Run Neomake on save
+"autocmd BufRead *.go Neomake " Run Neomake on open
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
@@ -122,3 +127,8 @@ let g:neomake_list_height = 6
 
 " Fix issue with osx + vim + crontab
 autocmd filetype crontab setlocal nobackup nowritebackup
+
+" The Silver Searcher, use ag over grep
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
